@@ -66,6 +66,8 @@ fprintf('Nuevo mejor error: %d\n',error_V);
 % Pintamos la grafica con los errores de entrenamiento y validacion.
 figure;
 grid on; hold on;
-title(sprintf('Rojo -> Errores entrenamiento. Azul -> Errores validacion'));
 plot(lambdas,errores_T,'-r', 'LineWidth', 3)
-plot(lambdas,errores_V,'-g', 'LineWidth', 3)
+plot(lambdas,errores_V,'-b', 'LineWidth', 3)
+title('Curva de aprendizaje');
+xlabel('Error de entrenamiento','FontSize',12);                 
+ylabel('Valor de Lambda','FontSize',12); 

@@ -50,7 +50,9 @@ function [best_size, best_ErrorV] = kfold (N, K, entrada, salida)
   fprintf('\nFin algoritmo k-fold\n');
   figure;
   grid on; hold on;
-  title(sprintf('Rojo -> errorT. Azul -> errorV'));
   plot(errores_T,'-r','LineWidth',3)
   plot(errores_V,'-b','LineWidth',3)
+  title('Kross Validation -- Antiguedad');
+  xlabel('Antiguedad en años','FontSize',12);                 
+  ylabel('Errores ','FontSize',12);
   

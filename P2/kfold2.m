@@ -52,7 +52,9 @@ function [best_size, best_ErrorV] = kfold2 (N, K, entrada, salida, best_Last)
   % muestreo de los resultados
   figure;
   grid on; hold on;
-  title(sprintf('Rojo -> errorT. Azul -> errorV'));
   plot(errores_T,'-r','LineWidth', 3)
   plot(errores_V,'-b','LineWidth', 3)
+  title('Kross Validation -- Distancia en Km');
+  xlabel('Distancia en km','FontSize',12);                 
+  ylabel('Errores','FontSize',12);
   
