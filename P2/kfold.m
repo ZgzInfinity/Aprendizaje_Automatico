@@ -32,6 +32,6 @@ function [best_size, best_ErrorV] = kfold (N, K, entrada, salida)
   figure;
   grid on; hold on;
   title(sprintf('Rojo -> errorT. Azul -> errorV'));
-  plot(errores_T,'r')
-  plot(errores_V,'r')
+  plot(errores_T,'-r','LineWidth',3)
+  plot(errores_V,'-b','LineWidth',3)
   
