@@ -1,3 +1,6 @@
+%% Rubén Rodríguez Esteban
+%% NIP -737215
+%% Fecha 7-3-2019
 
 function [ mejor_lambda, mejor_error ] = regu( n, k , Xdatos, ydatos)
 
