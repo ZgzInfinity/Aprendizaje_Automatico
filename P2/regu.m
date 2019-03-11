@@ -1,5 +1,5 @@
 %% Rubén Rodríguez Esteban
-%% NIP -737215
+%% NIP - 737215
 %% Fecha 7-3-2019
 
 function [ mejor_lambda, mejor_error ] = regu( n, k , Xdatos, ydatos)
@@ -71,3 +71,4 @@ plot(lambdas,errores_V,'-b', 'LineWidth', 3)
 title('Curva de aprendizaje');
 xlabel('Error de entrenamiento','FontSize',12);                 
 ylabel('Valor de Lambda','FontSize',12); 
+legend('Lambda Train','Lamba Validaion')

@@ -1,5 +1,5 @@
 %% Rubén Rodríguez Esteban
-%% NIP -737215
+%% NIP - 737215
 %% Fecha 7-3-2019
 
 function [best_size, best_ErrorV] = kfold (N, K, entrada, salida)
@@ -55,4 +55,5 @@ function [best_size, best_ErrorV] = kfold (N, K, entrada, salida)
   title('Kross Validation -- Antiguedad');
   xlabel('Antiguedad en años','FontSize',12);                 
   ylabel('Errores ','FontSize',12);
+  legend('Error Train','Error Validation')
   

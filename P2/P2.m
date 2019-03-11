@@ -1,5 +1,5 @@
 %% Rubén Rodríguez Esteban
-%% NIP -737215
+%% NIP - 737215
 %% Fecha 7-3-2019
 
 %% Cargar los datos

@@ -1,5 +1,5 @@
 %% Rubén Rodríguez Esteban
-%% NIP -737215
+%% NIP - 737215
 %% Fecha 7-3-2019
 
 function [best_size, best_ErrorV] = kfold2 (N, K, entrada, salida, best_Last)
@@ -57,4 +57,5 @@ function [best_size, best_ErrorV] = kfold2 (N, K, entrada, salida, best_Last)
   title('Kross Validation -- Distancia en Km');
   xlabel('Distancia en km','FontSize',12);                 
   ylabel('Errores','FontSize',12);
+  legend('Error Train','Error Validation')
   
