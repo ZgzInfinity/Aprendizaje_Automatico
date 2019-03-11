@@ -1,0 +1,79 @@
+>> P1
+
+ ---------- Ejercicio 2 -------------------
+
+Calculo de la prediccion
+
+th =
+
+  -3.4313e+004
+  2.6082e+003
+
+Error medio de los datos de entrenamiento 69534.9
+
+Error medio de los datos de test 63936.5
+
+ ---------- Ejercicio 3 ----------------
+
+warning: axis: unknown option 'vis3d'
+warning: called from
+    axis>__axis__ at line 296 column 7
+    axis at line 152 column 7
+    ecNormalBiDos at line 67 column 3
+    P1 at line 253 column 2
+Calculo de la prediccion
+th =
+
+  -1.2133e+004
+  3.0287e+003
+  -1.8853e+004
+
+Error de entrenamiento 69089.3
+Prediccion 100 m2 y 2 dormitorios 253036
+Prediccion 100 m2 y 3 dormitorios 234183
+Prediccion 100 m2 y 4 dormitorios 215330
+Prediccion 100 m2 y 5 dormitorios 196477
+Valor del error del test 55256.4
+
+ ---------- Ejercicio 4 ----------------
+
+Calculo de prediccion con descenso de gradiente
+Numero total de iteraciones: 58
+Error medio de los datos de entrenamiento 69534.9
+
+Error de test con descenso de Gradiente 63281.1
+
+ans =
+
+  -3.4313e+004
+  2.6082e+003
+
+ ---------- Ejercicio 5 ----------------
+
+Calculo de prediccion con descenso de gradiente
+Numero total de iteraciones: 233
+Error medio de los datos de entrenamiento 69089.3
+
+Error de test con descenso de Gradiente 56709.7
+
+ans =
+
+  -1.2133e+004
+  3.0287e+003
+  -1.8853e+004
+
+ ---------- Ejercicio 6 ----------------
+
+Calculo de prediccion con descenso de gradiente
+Numero total de iteraciones: 440
+Error medio de los datos de entrenamiento 67717.9
+
+Error de test con descenso de Gradiente 54611.5
+
+ans =
+
+  -1.2571e+004
+  2.7650e+003
+  -1.4630e+004
+
+>>
