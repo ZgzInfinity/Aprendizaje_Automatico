@@ -1,0 +1,172 @@
+
+   Ejercicio 2
+ ----------------
+
+Valores de theta obtenidos:
+ -27.071245
+ 0.220119
+ 0.216532
+
+Parte de las pruebas de regresión logistica para los admitidos:
+
+En el primer ejercicio de la práctica se ha realizado una regresión logística lineal para clasificar en base a
+las notas obtenidas en dos exámenes si un alumno es o no es admitido en una universidad. De todos los datos de
+resultados de exámenes proprocionados un 20% han sido separados como datos de test. Se ha programado la regresión
+logística y se ha obtenido la función de coste vista en clase para poder calcularla. En base a los cálculos efectuados se han conseguido los siguientes resultados:
+
+Porcentaje de errores con datos de entrenamiento: 8.750000
+Porcentaje de errores con datos de test: 15.000000
+
+En cuanto a la gráfica obtenida se puede observar que es una regresión logística lineal dado que la línea que 
+separa los datos en los dos clusters (admitidos y no admitidos) es una línea recta. No obstante se puede se puede
+observar que aunque la mayoría de los datos son clasificados correctamente hay algunas muestras que no. La razón 
+estriba en que para ver si eres o no admitido se tiene más en cuenta que destaques más en un examen que la media
+de ambos, por lo que un alumno que saca mala nota en un examen y buena en el segundo puede obtener mejores resultados
+que uno que saca notas decentes en ambos. Dado que hay algunas muestras que no son clasificadas de modo correcto, 
+se debería hacer expansiones de atributos con una poca más de complejidad como productos de atributos o una expansión 
+polinomial para evitar que el modelo se torne excesivamente complejo y aparezca el sobreajuste. En cuyo caso habría 
+que usar regularización porque sino el modelo en cuestión no sería válido.
+
+Para un alumno que en el primer examen ha sacado 45 puntos según se puede observar en la gráfica la nota que debe sacar 
+para poder ser adimitdo en la universidad es de 80 puntos. Dicha afirmación se puede observar en lagráfica dado que es 
+en el valor de 80 puntos porque es cuando la función sigmoidad se iguala al valor del umbral,concretamente de 0.5. De este
+modo valores menores suponen estar por debajo del umbral y, por tanto, no ser admitido, mientras que valores superiores 
+implican estar admitido porque se sobrepasa el umbral.
+
+
+   Ejercicio 3
+ ---------------
+
+Para llevar a cabo la clasificación en base al control de calidad de los microchips se han particionado un 20% de las muestras 
+de los microchips como datos de test. Se ha realizado una regresión logística regularizada con expansión de atributos. Para 
+llevar a cabo la regularización se ha usado el algoritmo de validación cruzada o Kfold y se ha usado el valor de Lambda que más minimiza los errores de validación. Tras realizar la regularización se ha prodecido a entrenar con todos los datos, usando como 
+valores de lambda 0 y el mejor encontrado tras la regularización en el Kfold.
+
+(OJO QUE LOS VALORES DE LAMBDA VAN CAMBIANDO PORQUE SON ALEATORIOS => LOS VALORES DE LAMBDA Y LOS ERRORES CAMBIAN)
+
+Elegimos el valor de lambda mediante validacion cruzada (Min=-0.01 - Max=0.01) y valor de paso 0.001.
+
+Inicio validacion cruzada:
+En cada iteración se muestra el valor de lambda utilizado y cuanto se el valor del error con esa lambda 
+para los datos de entreamiento y de validación.
+
+Lambda = -0.009000
+Error con lambda -0.009000 (Entrenamiento): 19.885089
+Error con lambda -0.009000 (Verificacion): 23.222222
+
+Lambda = -0.008000
+Error con lambda -0.008000 (Entrenamiento): 18.590971
+Error con lambda -0.008000 (Verificacion): 24.222222
+
+Lambda = -0.007000
+Error con lambda -0.007000 (Entrenamiento): 20.701778
+Error con lambda -0.007000 (Verificacion): 22.111111
+
+Lambda = -0.006000
+Error con lambda -0.006000 (Entrenamiento): 20.703146
+Error con lambda -0.006000 (Verificacion): 23.111111
+
+Lambda = -0.005000
+Error con lambda -0.005000 (Entrenamiento): 20.820793
+Error con lambda -0.005000 (Verificacion): 21.777778
+
+Lambda = -0.004000
+Error con lambda -0.004000 (Entrenamiento): 19.764706
+Error con lambda -0.004000 (Verificacion): 18.666667
+
+Lambda = -0.003000
+Error con lambda -0.003000 (Entrenamiento): 17.777018
+Error con lambda -0.003000 (Verificacion): 19.666667
+
+Lambda = -0.002000
+Error con lambda -0.002000 (Entrenamiento): 18.363885
+Error con lambda -0.002000 (Verificacion): 19.666667
+
+Lambda = -0.001000
+Error con lambda -0.001000 (Entrenamiento): 17.891929
+Error con lambda -0.001000 (Verificacion): 19.777778
+
+Lambda = 0.000000
+Error con lambda 0.000000 (Entrenamiento): 9.357045
+Error con lambda 0.000000 (Verificacion): 28.333333
+
+Lambda = 0.001000
+Error con lambda 0.001000 (Entrenamiento): 17.188782
+Error con lambda 0.001000 (Verificacion): 19.666667
+
+Lambda = 0.002000
+Error con lambda 0.002000 (Entrenamiento): 16.956224
+Error con lambda 0.002000 (Verificacion): 19.666667
+
+Lambda = 0.003000
+Error con lambda 0.003000 (Entrenamiento): 17.309166
+Error con lambda 0.003000 (Verificacion): 18.777778
+
+Lambda = 0.004000
+Error con lambda 0.004000 (Entrenamiento): 17.660739
+Error con lambda 0.004000 (Verificacion): 19.888889
+
+Lambda = 0.005000
+Error con lambda 0.005000 (Entrenamiento): 17.663475
+Error con lambda 0.005000 (Verificacion): 21.000000
+
+Lambda = 0.006000
+Error con lambda 0.006000 (Entrenamiento): 17.781122
+Error con lambda 0.006000 (Verificacion): 20.000000
+
+Lambda = 0.007000
+Error con lambda 0.007000 (Entrenamiento): 18.017784
+Error con lambda 0.007000 (Verificacion): 20.000000
+
+Lambda = 0.008000
+Error con lambda 0.008000 (Entrenamiento): 17.900137
+Error con lambda 0.008000 (Verificacion): 20.000000
+
+Lambda = 0.009000
+Error con lambda 0.009000 (Entrenamiento): 17.900137
+Error con lambda 0.009000 (Verificacion): 21.111111
+
+Lambda = 0.010000
+Error con lambda 0.010000 (Entrenamiento): 18.017784
+Error con lambda 0.010000 (Verificacion): 21.111111
+
+De todos los valores de lambda anteriores el mejor de todos ellos y es precisamente el valor escogido para trabajar en tareas 
+posteriores se muestra a continuación. Ese valor ha sido el seleccionado porque es el que da el error de validación más pequeño:
+
+Mejor lambda : -0.004000
+Error con lambda -0.004000 (Entrenamiento): 19.764706
+Error con datos de validacion : 18.666667
+
+Errores con lambda=0
+Tasa de errores con datos de entrenamiento: 8.421053
+Tasa de errores con datos de test: 26.086957
+
+Posteriormente se ha entrenado con todos los datos con dos valores de lambda, 0 y -0.004000, respectivamente y se ha realizado una 
+gráfica con la regresión logística obtenida en ambas situaciones de estudio. Se puede observar que de los dos modelos el mejor de todos
+ellos es claramente el segundo porque el error de validación es más pequeño con lambda tomando valor -0.004000 que con valor 0. Además
+que si se observa la gráfica se puede observar claramente que el modelo de regresión logística con lambda igual a 0 no es bueno se 
+produce sobreajuste dado que la curva de regresión se contorsiona bastante a los datos de entrenamiento, ajustandose para que el error
+sea mínimo y provocando que no generalice bien para los datos de test. De ahí se puede ver que el error de test es notablemente mayor
+en el primero que en el segundo.
+
+
+  Ejercicio 4 
+----------------
+
+En este ejercicio se ha realizado una matriz de confusión y lo valores de precisión y recall obtenidos obtenidos. Si se quiere que 
+el 95% de los chips aceptados sean buenos se debería aumentar el umbral para maximizar la precisión a costa de disminuir el recall. 
+En otras palabras, se debe aumentar el umbral hasta que todas las muestras positivas se clasifiquen como positivas. Si se obtuviera otra
+matriz de confusión con ese nuevo umbral la precisión sería menor al 95%.
+
+
+
+
+
+
+
+
+
+
+
+
+
