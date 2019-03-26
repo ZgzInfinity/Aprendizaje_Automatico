@@ -1,6 +1,12 @@
+%% Rubén Rodríguez Esteban
+%% NIP - 737215
+%% Fecha 18-3-2019
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% EJERCICIO 2 - REGRESION LOGISTICA BASICA %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+close all;
 
 fprintf('\nEJERCICIO 2 - REGRESION LOGISTICA BASICA\n');
 fprintf('----------------------------------------\n');
@@ -45,9 +51,9 @@ fprintf('Porcentaje de errores con datos de test: %f\n', ((1 - (mean(double(h ==
 X = [ones(m, 1) X];
 plotDecisionBoundary(theta, X, y);  
 hold on;  
-xlabel('Exam 1 score')  
-ylabel('Exam 2 score')  
-legend('Admitted', 'Not admitted')  
+xlabel('Puntos examen 1')  
+ylabel('Puntos examen 2')  
+legend('Admitidos', 'No Admitidos')  
 hold off;
 
 % Calculamos iterativamente la evolucion de la prediccion sabiendo que la
@@ -65,11 +71,8 @@ end
 % Dibujamos la grafica con los puntos obtenidos
 figure;
 grid on; hold on;
-title(sprintf('Predicciones de aprobado con primer examen = 45 en funcion del segundo examen'));
-plot(cuenta_i,predicciones,'r')
-
-fprintf('\nPrograma pausado. Pulsa ENTER para continuar con el ejercicio 3.\n');
-pause;
+title('Prediccion de aprobado con 45 puntos en primer examen')
+plot(cuenta_i, predicciones, '-b','LineWidth', 3)
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -81,6 +84,7 @@ fprintf('----------------------------\n');
 
 % Cargamos los datos del fichero mchip_data
 
+% Se cargan los datos.
 data = load('mchip_data.txt');
 X = data(:, [1, 2]); 
 y = data(:, 3);
@@ -89,76 +93,64 @@ p = randperm(N); %reordena aleatoriamente los datos
 X = X(p,:);
 y = y(p);
 
-
-% Separamos el 20% de los datos
+% Se dividen los datos en 5 conjuntos, donde el primer conjunto sera para
+% cross-validacion y los restantes para entrenamiento (separacion 20%-80%).
 [ Xcv, ycv, Xtr, ytr ] = particion ( 1 , 5 , X, y);
 
-% Aplicamos validacion cruzada para obtener el mejor valor de lambda
-fprintf('\nElegimos el valor de lambda mediante validacion cruzada (Min=-0.01 - Max=0.01)');
-warning off;
-mejor_lambda = kfoldRegularizacion(-0.01,0.01,0.001,10,Xtr,ytr);
+% Se escoge el mejor lambda con el algoritmo de kfold.
+mejor_lambda = kfoldRegularizacion(10,Xtr,ytr);
 
-% Entrenamos de nuevo con el valor obtenido de lambda y con lambda=0
+% Se entrena de nuevo
 Xtr = mapFeature(Xtr(:,1), Xtr(:,2));
-theta_inicial = zeros(size(Xtr, 2), 1);
-
-% Resolvemos la regresion mediante 'minFunc'
+theta_ini = zeros(size(Xtr, 2), 1);
 options = [];
 options.display = 'none';
-lambda = -0.1;
 
-theta_mejor_lambda = minFunc(@CosteLogReg,theta_inicial,options,Xtr,ytr,mejor_lambda);
-theta_lambda_0 = minFunc(@CosteLogReg,theta_inicial,options,Xtr,ytr,0);
+% Se obtiene el theta con el mejor lambda encontrado y con lambda = 0.
+theta_mejor_lambda = minFunc(@CosteLogReg,theta_ini,options,Xtr,ytr,mejor_lambda);
+theta_lambda0 = minFunc(@CosteLogReg,theta_ini,options,Xtr,ytr,0);
 
-%% Dibujar la solicion para lambda=0
+% Se dibuja la solucion para lambda = 0.
 X = mapFeature(X(:,1), X(:,2));
-plotDecisionBoundary(theta_lambda_0, X, y);
+plotDecisionBoundary(theta_lambda0, X, y);
 title(sprintf('lambda = %g', 0))
 xlabel('Microchip Test 1')
 ylabel('Microchip Test 2')
 legend('y = 1', 'y = 0', 'Lambda = 0')
 
-%% Dibujar la solicion para lambda elegida a traves de validacion cruzada
+% Se dibuja la solucion para el mejor lambda encontrado anteriormente.
 plotDecisionBoundary(theta_mejor_lambda, X, y);
 title(sprintf('lambda = %g', mejor_lambda))
 xlabel('Microchip Test 1')
 ylabel('Microchip Test 2')
 legend('y = 1', 'y = 0', 'Lambda = mejor_lambda')
 
-
-% Calculamos los errores
-
-% Lambda = 0
-% Error con datos de entrenamiento
-fprintf('\n-----------------------------------------------------\n');
+% Error con datos de entrenamiento con lambda = 0.
 fprintf('\nErrores con lambda=0');
-h = prediccion(theta_lambda_0, Xtr);
-error_tr = ((1 - (mean(double(h == ytr))))*100);
-fprintf('\nTasa de errores con datos de entrenamiento: %f\n', error_tr);
+h = prediccion(theta_lambda0, Xtr);
+error = ((1 - (mean(double(h == ytr))))*100);
+fprintf('\nErrores con los datos de entrenamiento: %f\n', error);
 
-% Error con datos de test
+% Error con datos de test con lambda = 0.
 [m, n] = size(Xcv);  
 Xcv = mapFeature(Xcv(:,1), Xcv(:,2));
-h = prediccion(theta_lambda_0, Xcv);
-error_cv = ((1 - (mean(double(h == ycv))))*100);
-fprintf('Tasa de errores con datos de test: %f\n', error_cv);
+h = prediccion(theta_lambda0, Xcv);
+error = ((1 - (mean(double(h == ycv))))*100);
+fprintf('Errores con los datos de test: %f\n', error);
 
-
-% Lambda = mejor_lambda
-% Error con datos de entrenamiento
+% Error con datos de entrenamiento con el mejor lambda encontrado anteriormente.
 fprintf('\nErrores con lambda=%f',mejor_lambda);
 h = prediccion(theta_mejor_lambda, Xtr);
-error_tr = ((1 - (mean(double(h == ytr))))*100);
-fprintf('\nTasa de errores con datos de entrenamiento: %f\n', error_tr);
+error = ((1 - (mean(double(h == ytr))))*100);
+fprintf('\nErrores con los datos de entrenamiento: %f\n', error);
 
-% Error con datos de test
+% Error con datos de test con el mejor lambda encontrado anteriormente.
 [m, n] = size(Xcv);  
 h = prediccion(theta_mejor_lambda, Xcv);
-error_cv = ((1 - (mean(double(h == ycv))))*100);
-fprintf('Tasa de errores con datos de test: %f\n', error_cv);
+error = ((1 - (mean(double(h == ycv))))*100);
+fprintf('Errores con los datos de test: %f\n', error);
 
-fprintf('\nPrograma pausado. Pulsa ENTER para continuar con el ejercicio 4.\n');
-pause;
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% EJERCICIO 4 - PRECISION/RECALL %%
@@ -176,9 +168,8 @@ tn = (sum(double((h==0)&(ycv==0))));
 fn = (sum(double((h==0)&(ycv==1))));
 %FP - False positive
 fp = (sum(double((h==1)&(ycv==0))));
-%TP - True positive
+%TP - True 
 tp = (sum(double((h==1)&(ycv==1))));
-
 
 matriz_confusion = [tp fp; fn tn]
 
@@ -187,3 +178,25 @@ recall = tp / (tp + fn);
 
 fprintf('Precision = %f\n', precision);
 fprintf('Recall = %f\n', recall);
+
+
+h = prediccion(theta_mejor_lambda, Xcv, 0.8);
+error_cv = ((1 - (mean(h == ycv))) * 100);
+fprintf('Tasa de errores : %f\n', error_cv);
+
+%TN - True negative
+tn = (sum(double((h==0)&(ycv==0))));
+%FN - False negative
+fn = (sum(double((h==0)&(ycv==1))));
+%FP - False positive
+fp = (sum(double((h==1)&(ycv==0))));
+%TP - True 
+tp = (sum(double((h==1)&(ycv==1))));
+
+matriz_confusion = [tp fp; fn tn]
+
+precision = tp / (tp + fp);
+recall = tp / (tp + fn);
+
+fprintf('Precision = %f\n', precision);
+fprintf('Recall = %f\n', recall); 

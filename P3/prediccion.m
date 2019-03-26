@@ -1,10 +1,10 @@
-function h = prediccion(theta, X)
+function h = prediccion(theta, X, umbral)
 
+  if (nargin < 3)
+    umbral = 0.5;
+  end
+  
 	h = 1./(1+exp(-(X*theta)));
     
-    index_1 = find(h >= 0.5);  
-	index_0 = find(h < 0.5);  
-     
-	h(index_1) = ones(size(index_1));  
-	h(index_0) = zeros(size(index_0));
+  h = (h >= umbral);
 end  
