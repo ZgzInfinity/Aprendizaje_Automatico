@@ -42,12 +42,12 @@ fprintf('Error con datos de test = %f\n',error_test);
 
 fprintf('Matrices de confusion para cada clasificador\n');
 fprintf('Formato de la matriz de confusion\n');
-fprintf('TP  FP');
-fprintf('FN  TN');
-fprintf('TP => true positive');
-fprintf('FP => false positive');
-fprintf('FN => false negative');
-fprintf('TN => true negative');
+fprintf('TP  FP\n');
+fprintf('FN  TN\n');
+fprintf('TP => true positive\n');
+fprintf('FP => false positive\n');
+fprintf('FN => false negative\n');
+fprintf('TN => true negative\n');
 
 % Calculamos la matriz de confusion para cada clase
 for i=1:10

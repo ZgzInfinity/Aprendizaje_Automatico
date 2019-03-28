@@ -9,11 +9,10 @@ fp = (sum(double((p==clase)&(y~=clase))));
 %TP - True positive
 tp = (sum(double((p==clase)&(y==clase))));
 fprintf('------------------------\n\n');
-<<<<<<< HEAD
+
+
 fprintf('Para el digito %d\n', clase);
-=======
 fprintf('Matriz de confusion de %d', clase);
->>>>>>> 07cbcbd343e57b96e62f605a4cc68b13c0221706
 matriz_confusion = [tp fp; fn tn]
 
 precision = tp / (tp + fp);
