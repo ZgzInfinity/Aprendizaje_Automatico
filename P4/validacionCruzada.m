@@ -75,7 +75,6 @@ plot(lambdas,errores_V,'-b','LineWidth',3);
 title('Comparativa de errores');
 xlabel('Valor de lambda');
 ylabel('Errores');
-legend('Error Entrenamiento','Error Validacion');
-title(sprintf('Rojo -> Errores entrenamiento. Azul -> Errores validacion'));
+legend ('Error Entrenamiento', 'Error Validacion','Location','NorthWest');
 plot(lambdas,errores_T,'r')
 plot(lambdas,errores_V)
