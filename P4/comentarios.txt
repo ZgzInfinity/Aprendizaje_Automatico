@@ -1,0 +1,26 @@
+
+  Ejercicio 2
+---------------
+
+Para hacer este ejercicio se ha procedido a reutilizar el algoritmo de validación cruzada en la práctica anterior. Se ha procedido a programar
+una regularización y clasificación multiclase de un conjunto de manuscritos numéricos. Para llevar a cabo la regresión logística se ha se han 
+efectuado una serie de modificaciones con respecto de la práctica anterior aunque el esquema de funcionamiento es el mismo.
+
+Como intervalo de decisión de lambda se ha usado logspace(-10 ,0) con el objetivo de poder visualizar de una manera más clara la gráfica de 
+comparativa de errores de validación y de entrenamiento. Sin embargo, no se han realizado las predicciones cambiando las porciones de los 
+datos de entrenamiento y de validación en función de los folds tal y como se hacía en la práctica anterior dado que el coste era demasiado largo. 
+
+La razón estriba en que el algoritmo era de orden n^2 dado que para cada iteración del valor de lambda debía realiar K iteraciones, y 
+para cada iteración entrenar y calcular los errores correspondientes. De ahí la larga duración del coste, por ello se ha hecho solo un único bucle para las lambdas y se han usado los mismos datos de validación y de entrenamiento a razón de 20% y 80% respectivamente.
+
+Para cada valor de lambda se ha obtenido una matriz theta-gorda en la que cada columna son los parámetros thetas de cada clasificador. En base a esa matriz theta-gorda se ha obtenido la predicción para cada clase, y en base a dicha predicción, se han obtenido los errores de validación 
+y de entrenamiento. Se ha seleccionado el valor de lambda que ha dado el mínimo error de validación.
+
+  Ejercicio 3
+---------------
+
+En base al valor lambda calculado en el ejercicio anterior se ha procedido a realizar el entrenamiento con todos los datos para calcular la
+nueva matriz theta-gorda y se posteriormente con y en base a esa theta se ha validado con los datos de test y calculado el error.
+Posteriormente se ha obtenido la matriz de confusión de cada clasificador y se han analizado los resultados. Son más problemáticos todos los
+datos que tienen un recall más bajo puesto la fracción de muestras positivas que se detectan con respecto del total de muestras que se sabe que son positivas es menor. 
+

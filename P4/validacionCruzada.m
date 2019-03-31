@@ -35,7 +35,7 @@ while (lambda<=lambda_max)
     error_T = error_T + error_tr;
     
     % Error con datos de validacion
-    p = prediccion(theta, Xcv);
+    p = clasificacionMulticlase(theta, Xcv);
     error_cv = ((1 - (mean(double(p == ycv))))*100);
     error_V = error_V + error_cv;
         
