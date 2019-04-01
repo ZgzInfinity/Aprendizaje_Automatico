@@ -12,7 +12,6 @@ fprintf('------------------------\n\n');
 
 
 fprintf('Para el digito %d\n', clase);
-fprintf('Matriz de confusion de %d', clase);
 matriz_confusion = [tp fp; fn tn]
 
 precision = tp / (tp + fp);
