@@ -1,22 +1,23 @@
-function [ precision, recall, tp ] = matrizConfusion( p, y, clase )
+function [ precision, recall] = matrizConfusion( p, y, clase )
 
-%TN - True negative
-tn = (sum(double((p~=clase)&(y~=clase))));
-%FN - False negative
-fn = (sum(double((p~=clase)&(y==clase))));
-%FP - False positive
-fp = (sum(double((p==clase)&(y~=clase))));
-%TP - True positive
-tp = (sum(double((p==clase)&(y==clase))));
-fprintf('------------------------\n\n');
-fprintf('Para el clasificador %d', clase);
-matriz_confusion = [tp fp; fn tn]
+  %TN - True negative
+  tn = (sum(double((p~=clase)&(y~=clase))));
+  %FN - False negative
+  fn = (sum(double((p~=clase)&(y==clase))));
+  %FP - False positive
+  fp = (sum(double((p==clase)&(y~=clase))));
+  %TP - True positive
+  tp = (sum(double((p==clase)&(y==clase))));
+  fprintf('------------------------\n\n');
+  fprintf('Para el clasificador %d\n', clase);
+  matriz_confusion = [tp fp; fn tn]
 
-precision = tp / (tp + fp);
-recall = tp / (tp + fn);
+  precision = tp / (tp + fp);
+  recall = tp / (tp + fn);
 
-fprintf('Precision (%d) = %f\n', clase, precision);
-fprintf('Recall (%d) = %f\n', clase, recall);
+  fprintf('Precision (%d) = %f\n', clase, precision);
+  fprintf('Recall (%d) = %f\n', clase, recall);
 
+  %Fallos para cada clase
 
 end

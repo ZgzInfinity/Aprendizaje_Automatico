@@ -33,18 +33,17 @@ fprintf('Error con datos de test = %f\n',error_test);
 
 % Matriz de valores F1_Score
 F1_ScoresMat = [];
-MuestrasCorrectas = [];
+PrecisionMat = [];
+RecallMat = [];
 
 % Calculamos la matriz de confusion para cada clase
 for i=1:10
-    [precision, recall, truePositive] = matrizConfusion(p,ytest,i);
+    [precision, recall] = matrizConfusion(p,ytest,i);
     F1_Score = 2 * ((precision * recall) / (precision + recall));
     F1_ScoresMat = [ F1_ScoresMat; F1_Score ];
-    MuestrasCorrectas = [MuestrasCorrectas; truePositive];
+    PrecisionMat = [PrecisionMat; precision ];
+    RecallMat = [RecallMat; recall ];
 end
-
-% Muestreo de la matriz de confusion global
-matrizConfusionGlobal = diag(MuestrasCorrectas)
 
 % Muestreo del grafico final
 figure;
@@ -58,8 +57,16 @@ legend ('F1_Score','Location','NorthWest')
 % Inventa una solucion y muestra las confusiones
 verConfusiones(Xtest, ytest, p);
 
-media = mean(F1_ScoresMat);
-fprintf('La media de los F1_SCORES: %f\n\n', media);
+% obtencion de la matriz de confusion global
+matrizConfusionGorda(p, ytest, 10);
+
+% Resultados analiticos
+mediaPrecision = mean(PrecisionMat);
+mediaRecall = mean(RecallMat);
+mediaScore = mean(F1_ScoresMat);
+fprintf('La media de la precision: %f\n',mediaPrecision);
+fprintf('La media del recall: %f\n',mediaRecall);
+fprintf('La media de los F1_SCORES: %f\n', mediaScore);
 
 
 %
@@ -99,18 +106,18 @@ fprintf('TN => true negative\n');
 
 % Matriz de valores F1_Score
 F1_ScoresMat = [];
-MuestrasCorrectas = [];
+PrecisionMat = [];
+RecallMat = [];
 
 % Calculamos la matriz de confusion para cada clase
 for i=1:10
-    [precision, recall, truePositive] = matrizConfusion(p,ytest,i);
+    [precision, recall] = matrizConfusion(p,ytest,i);
     F1_Score = 2 * ((precision * recall) / (precision + recall));
     F1_ScoresMat = [ F1_ScoresMat; F1_Score ];
-    MuestrasCorrectas = [MuestrasCorrectas; truePositive];
+    PrecisionMat = [PrecisionMat; precision ];
+    RecallMat = [RecallMat; recall ];
 end
 
-% Muestreo de la matriz de confusion global
-matrizConfusionGlobal = diag(MuestrasCorrectas)
 
 % Muestreo del grafico final
 figure;
@@ -124,5 +131,14 @@ legend ('F1_Score','Location','NorthWest')
 % Inventa una solucion y muestra las confusiones
 verConfusiones(Xtest, ytest, p);
 
-media = mean(F1_ScoresMat);
-fprintf('La media de los F1_SCORES: %f\n', media);
+
+% obtencion de la matriz de confusion global
+matrizConfusionGorda(p, ytest, 10);
+
+% Resultados analiticos
+mediaPrecision = mean(PrecisionMat);
+mediaRecall = mean(RecallMat);
+mediaScore = mean(F1_ScoresMat);
+fprintf('La media de la precision: %f\n',mediaPrecision);
+fprintf('La media del recall: %f\n',mediaRecall);
+fprintf('La media de los F1_SCORES: %f\n', mediaScore);
