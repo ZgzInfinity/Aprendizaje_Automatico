@@ -1,4 +1,4 @@
-function [ precision, recall ] = matrizConfusion( p, y, clase )
+function [ precision, recall, tp ] = matrizConfusion( p, y, clase )
 
 %TN - True negative
 tn = (sum(double((p~=clase)&(y~=clase))));
@@ -9,7 +9,7 @@ fp = (sum(double((p==clase)&(y~=clase))));
 %TP - True positive
 tp = (sum(double((p==clase)&(y==clase))));
 fprintf('------------------------\n\n');
-fprintf('Matriz de confusion de %d', clase);
+fprintf('Para el clasificador %d', clase);
 matriz_confusion = [tp fp; fn tn]
 
 precision = tp / (tp + fp);

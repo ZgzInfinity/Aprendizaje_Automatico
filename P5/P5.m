@@ -22,7 +22,7 @@ y = y(p);
 
 fprintf('\nValidacion cruzada para Bayes Ingenuo\n');
 
-mejor_lambda = validacionCruzada( 0, 0.1, 50, X, y, 10, 1);
+mejor_lambda = validacionCruzada(X, y, 10, 1);
 
 modelo = entrenarGaussianas(X, y, 10, 1, mejor_lambda);
     
@@ -31,16 +31,36 @@ p = clasificacionBayesiana(modelo,Xtest);
 error_test = ((1 - (mean(double(p == ytest))))*100);
 fprintf('Error con datos de test = %f\n',error_test);
 
+% Matriz de valores F1_Score
+F1_ScoresMat = [];
+MuestrasCorrectas = [];
+
 % Calculamos la matriz de confusion para cada clase
 for i=1:10
-    matrizConfusion(p,ytest,i);
+    [precision, recall, truePositive] = matrizConfusion(p,ytest,i);
+    F1_Score = 2 * ((precision * recall) / (precision + recall));
+    F1_ScoresMat = [ F1_ScoresMat; F1_Score ];
+    MuestrasCorrectas = [MuestrasCorrectas; truePositive];
 end
+
+% Muestreo de la matriz de confusion global
+matrizConfusionGlobal = diag(MuestrasCorrectas)
+
+% Muestreo del grafico final
+figure;
+title('Comparativa de clasificadores en Bayes ingenuo');
+xlabel('Clasificadores');
+ylabel('F1_Score');
+bar(F1_ScoresMat)
+legend ('F1_Score','Location','NorthWest')
+
 
 % Inventa una solucion y muestra las confusiones
 verConfusiones(Xtest, ytest, p);
 
-fprintf('\nPrograma pausado. Pulsa ENTER para continuar con el ejercicio 4.\n');
-pause;
+media = mean(F1_ScoresMat);
+fprintf('La media de los F1_SCORES: %f\n\n', media);
+
 
 %
 % Ejercicio 4 - Covarianzas completas
@@ -59,7 +79,7 @@ y = y(p);
 
 fprintf('\nValidacion cruzada con matrices de covarianzas completas\n');
 
-mejor_lambda = validacionCruzada( 0, 0.1, 50, X, y, 10, 0);
+mejor_lambda = validacionCruzada(X, y, 10, 0);
 
 modelo = entrenarGaussianas(X, y, 10, 0, mejor_lambda);
     
@@ -68,11 +88,41 @@ p = clasificacionBayesiana(modelo,Xtest);
 error_test = ((1 - (mean(double(p == ytest))))*100);
 fprintf('Error con datos de test = %f\n',error_test);
 
+fprintf('Matrices de confusion para cada clasificador\n');
+fprintf('Formato de la matriz de confusion\n');
+fprintf('TP  FP\n');
+fprintf('FN  TN\n');
+fprintf('TP => true positive\n');
+fprintf('FP => false positive\n');
+fprintf('FN => false negative\n');
+fprintf('TN => true negative\n');
+
+% Matriz de valores F1_Score
+F1_ScoresMat = [];
+MuestrasCorrectas = [];
+
 % Calculamos la matriz de confusion para cada clase
 for i=1:10
-    matrizConfusion(p,ytest,i);
+    [precision, recall, truePositive] = matrizConfusion(p,ytest,i);
+    F1_Score = 2 * ((precision * recall) / (precision + recall));
+    F1_ScoresMat = [ F1_ScoresMat; F1_Score ];
+    MuestrasCorrectas = [MuestrasCorrectas; truePositive];
 end
+
+% Muestreo de la matriz de confusion global
+matrizConfusionGlobal = diag(MuestrasCorrectas)
+
+% Muestreo del grafico final
+figure;
+title('Comparativa de clasificadores en Covarianzas completas');
+xlabel('Clasificadores');
+ylabel('F1_Score');
+bar(F1_ScoresMat)
+legend ('F1_Score','Location','NorthWest')
+
 
 % Inventa una solucion y muestra las confusiones
 verConfusiones(Xtest, ytest, p);
 
+media = mean(F1_ScoresMat);
+fprintf('La media de los F1_SCORES: %f\n', media);
