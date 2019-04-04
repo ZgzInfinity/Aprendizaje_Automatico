@@ -1,0 +1,554 @@
+
+Ejercicio 3 - Bayes ingenuo.
+---------------------------------------
+
+Validacion cruzada para Bayes Ingenuo
+Error de entrenamiento 32.531250
+Error de validacion 36.875000
+
+Error de entrenamiento 32.375000
+Error de validacion 36.500000
+
+Error de entrenamiento 32.031250
+Error de validacion 36.125000
+
+Error de entrenamiento 31.750000
+Error de validacion 35.750000
+
+Error de entrenamiento 31.406250
+Error de validacion 35.500000
+
+Error de entrenamiento 31.125000
+Error de validacion 34.625000
+
+Error de entrenamiento 30.750000
+Error de validacion 34.250000
+
+Error de entrenamiento 30.406250
+Error de validacion 33.875000
+
+Error de entrenamiento 30.093750
+Error de validacion 33.625000
+
+Error de entrenamiento 29.718750
+Error de validacion 33.250000
+
+Error de entrenamiento 29.406250
+Error de validacion 33.250000
+
+Error de entrenamiento 29.093750
+Error de validacion 32.875000
+
+Error de entrenamiento 28.468750
+Error de validacion 32.375000
+
+Error de entrenamiento 27.937500
+Error de validacion 31.750000
+
+Error de entrenamiento 27.406250
+Error de validacion 31.625000
+
+Error de entrenamiento 26.968750
+Error de validacion 31.250000
+
+Error de entrenamiento 26.437500
+Error de validacion 30.875000
+
+Error de entrenamiento 25.968750
+Error de validacion 30.500000
+
+Error de entrenamiento 25.468750
+Error de validacion 29.375000
+
+Error de entrenamiento 24.812500
+Error de validacion 28.875000
+
+Error de entrenamiento 24.031250
+Error de validacion 28.000000
+
+Error de entrenamiento 23.562500
+Error de validacion 27.875000
+
+Error de entrenamiento 23.218750
+Error de validacion 27.500000
+
+Error de entrenamiento 22.500000
+Error de validacion 26.875000
+
+Error de entrenamiento 22.062500
+Error de validacion 25.875000
+
+Error de entrenamiento 21.625000
+Error de validacion 25.250000
+
+Error de entrenamiento 21.281250
+Error de validacion 24.500000
+
+Error de entrenamiento 21.156250
+Error de validacion 23.625000
+
+Error de entrenamiento 20.718750
+Error de validacion 23.250000
+
+Error de entrenamiento 20.062500
+Error de validacion 22.625000
+
+Error de entrenamiento 19.687500
+Error de validacion 22.125000
+
+Error de entrenamiento 19.187500
+Error de validacion 22.000000
+
+Error de entrenamiento 18.750000
+Error de validacion 21.500000
+
+Error de entrenamiento 18.250000
+Error de validacion 20.875000
+
+Error de entrenamiento 17.625000
+Error de validacion 20.625000
+
+Error de entrenamiento 17.250000
+Error de validacion 20.000000
+
+Error de entrenamiento 17.031250
+Error de validacion 19.000000
+
+Error de entrenamiento 16.625000
+Error de validacion 18.625000
+
+Error de entrenamiento 16.781250
+Error de validacion 17.500000
+
+Error de entrenamiento 16.812500
+Error de validacion 17.375000
+
+Error de entrenamiento 17.250000
+Error de validacion 17.500000
+
+Error de entrenamiento 17.750000
+Error de validacion 18.000000
+
+Error de entrenamiento 18.906250
+Error de validacion 19.000000
+
+Error de entrenamiento 20.781250
+Error de validacion 21.375000
+
+Error de entrenamiento 23.125000
+Error de validacion 22.250000
+
+Error de entrenamiento 25.343750
+Error de validacion 23.875000
+
+Error de entrenamiento 27.281250
+Error de validacion 27.000000
+
+Error de entrenamiento 28.968750
+Error de validacion 28.625000
+
+Error de entrenamiento 30.750000
+Error de validacion 30.625000
+
+Error de entrenamiento 31.781250
+Error de validacion 32.750000
+
+El mejor valor de lambda obtenido es 0.009103
+Error con datos de test = 18.900000
+------------------------
+
+Para el clasificador 1
+matriz_confusion =
+
+    98    30
+     2   870
+
+Precision (1) = 0.765625
+Recall (1) = 0.980000
+------------------------
+
+Para el clasificador 2
+matriz_confusion =
+
+    76    14
+    24   886
+
+Precision (2) = 0.844444
+Recall (2) = 0.760000
+------------------------
+
+Para el clasificador 3
+matriz_confusion =
+
+    73    17
+    27   883
+
+Precision (3) = 0.811111
+Recall (3) = 0.730000
+------------------------
+
+Para el clasificador 4
+matriz_confusion =
+
+    72    15
+    28   885
+
+Precision (4) = 0.827586
+Recall (4) = 0.720000
+------------------------
+
+Para el clasificador 5
+matriz_confusion =
+
+    59     8
+    41   892
+
+Precision (5) = 0.880597
+Recall (5) = 0.590000
+------------------------
+
+Para el clasificador 6
+matriz_confusion =
+
+    94    23
+     6   877
+
+Precision (6) = 0.803419
+Recall (6) = 0.940000
+------------------------
+
+Para el clasificador 7
+matriz_confusion =
+
+    85     3
+    15   897
+
+Precision (7) = 0.965909
+Recall (7) = 0.850000
+------------------------
+
+Para el clasificador 8
+matriz_confusion =
+
+    76    33
+    24   867
+
+Precision (8) = 0.697248
+Recall (8) = 0.760000
+------------------------
+
+Para el clasificador 9
+matriz_confusion =
+
+    89    40
+    11   860
+
+Precision (9) = 0.689922
+Recall (9) = 0.890000
+------------------------
+
+Para el clasificador 10
+matriz_confusion =
+
+    89     6
+    11   894
+
+Precision (10) = 0.936842
+Recall (10) = 0.890000
+Matriz de confusion global con los clasificadoresmatrizGorda =
+
+   98    1    1    0    0    0    0    0    0    0
+    5   76    0    0    0    9    0    8    0    2
+    5    6   73    1    2    1    1    6    5    0
+    1    4    0   72    1    3    0    3   16    0
+    3    1   12    4   59    5    1    6    5    4
+    3    1    0    0    0   94    0    2    0    0
+    4    0    0    3    0    0   85    1    7    0
+    7    1    3    3    2    1    0   76    7    0
+    2    0    1    4    0    0    1    3   89    0
+    0    0    0    0    3    4    0    4    0   89
+
+La media de la precision: 0.822270
+La media del recall: 0.811000
+La media de los F1_SCORES: 0.809271
+
+Ejercicio 4 - Covarianzas completas.
+-----------------------------------------------------------
+
+Validacion cruzada con matrices de covarianzas completas
+Error de entrenamiento 0.031250
+Error de validacion 26.625000
+
+Error de entrenamiento 0.031250
+Error de validacion 26.125000
+
+Error de entrenamiento 0.031250
+Error de validacion 26.000000
+
+Error de entrenamiento 0.031250
+Error de validacion 25.625000
+
+Error de entrenamiento 0.031250
+Error de validacion 25.500000
+
+Error de entrenamiento 0.031250
+Error de validacion 25.375000
+
+Error de entrenamiento 0.031250
+Error de validacion 24.625000
+
+Error de entrenamiento 0.031250
+Error de validacion 23.750000
+
+Error de entrenamiento 0.031250
+Error de validacion 23.500000
+
+Error de entrenamiento 0.031250
+Error de validacion 23.000000
+
+Error de entrenamiento 0.031250
+Error de validacion 22.250000
+
+Error de entrenamiento 0.031250
+Error de validacion 21.625000
+
+Error de entrenamiento 0.031250
+Error de validacion 21.375000
+
+Error de entrenamiento 0.031250
+Error de validacion 21.000000
+
+Error de entrenamiento 0.031250
+Error de validacion 20.625000
+
+Error de entrenamiento 0.031250
+Error de validacion 20.375000
+
+Error de entrenamiento 0.031250
+Error de validacion 19.875000
+
+Error de entrenamiento 0.000000
+Error de validacion 19.500000
+
+Error de entrenamiento 0.000000
+Error de validacion 19.375000
+
+Error de entrenamiento 0.000000
+Error de validacion 19.125000
+
+Error de entrenamiento 0.000000
+Error de validacion 18.875000
+
+Error de entrenamiento 0.000000
+Error de validacion 18.000000
+
+Error de entrenamiento 0.000000
+Error de validacion 16.750000
+
+Error de entrenamiento 0.000000
+Error de validacion 15.750000
+
+Error de entrenamiento 0.000000
+Error de validacion 15.125000
+
+Error de entrenamiento 0.000000
+Error de validacion 14.625000
+
+Error de entrenamiento 0.000000
+Error de validacion 14.125000
+
+Error de entrenamiento 0.000000
+Error de validacion 13.875000
+
+Error de entrenamiento 0.031250
+Error de validacion 13.250000
+
+Error de entrenamiento 0.031250
+Error de validacion 12.750000
+
+Error de entrenamiento 0.031250
+Error de validacion 12.000000
+
+Error de entrenamiento 0.031250
+Error de validacion 11.250000
+
+Error de entrenamiento 0.031250
+Error de validacion 10.125000
+
+Error de entrenamiento 0.031250
+Error de validacion 9.250000
+
+Error de entrenamiento 0.062500
+Error de validacion 8.125000
+
+Error de entrenamiento 0.062500
+Error de validacion 7.875000
+
+Error de entrenamiento 0.156250
+Error de validacion 7.375000
+
+Error de entrenamiento 0.187500
+Error de validacion 6.625000
+
+Error de entrenamiento 0.250000
+Error de validacion 6.125000
+
+Error de entrenamiento 0.281250
+Error de validacion 5.875000
+
+Error de entrenamiento 0.531250
+Error de validacion 5.500000
+
+Error de entrenamiento 0.687500
+Error de validacion 5.500000
+
+Error de entrenamiento 0.875000
+Error de validacion 5.625000
+
+Error de entrenamiento 1.437500
+Error de validacion 5.625000
+
+Error de entrenamiento 2.250000
+Error de validacion 6.250000
+
+Error de entrenamiento 3.312500
+Error de validacion 6.625000
+
+Error de entrenamiento 4.718750
+Error de validacion 8.250000
+
+Error de entrenamiento 6.718750
+Error de validacion 10.375000
+
+Error de entrenamiento 9.375000
+Error de validacion 12.500000
+
+Error de entrenamiento 12.406250
+Error de validacion 14.750000
+
+El mejor valor de lambda obtenido es 0.014563
+Error con datos de test = 3.600000
+Matrices de confusion para cada clasificador
+Formato de la matriz de confusion
+TP  FP
+FN  TN
+TP => true positive
+FP => false positive
+FN => false negative
+TN => true negative
+------------------------
+
+Para el clasificador 1
+matriz_confusion =
+
+    99     4
+     1   896
+
+Precision (1) = 0.961165
+Recall (1) = 0.990000
+------------------------
+
+Para el clasificador 2
+matriz_confusion =
+
+    98     7
+     2   893
+
+Precision (2) = 0.933333
+Recall (2) = 0.980000
+------------------------
+
+Para el clasificador 3
+matriz_confusion =
+
+    93     5
+     7   895
+
+Precision (3) = 0.948980
+Recall (3) = 0.930000
+------------------------
+
+Para el clasificador 4
+matriz_confusion =
+
+    97     1
+     3   899
+
+Precision (4) = 0.989796
+Recall (4) = 0.970000
+------------------------
+
+Para el clasificador 5
+matriz_confusion =
+
+    93     2
+     7   898
+
+Precision (5) = 0.978947
+Recall (5) = 0.930000
+------------------------
+
+Para el clasificador 6
+matriz_confusion =
+
+    99     1
+     1   899
+
+Precision (6) = 0.990000
+Recall (6) = 0.990000
+------------------------
+
+Para el clasificador 7
+matriz_confusion =
+
+    96     1
+     4   899
+
+Precision (7) = 0.989691
+Recall (7) = 0.960000
+------------------------
+
+Para el clasificador 8
+matriz_confusion =
+
+    94     9
+     6   891
+
+Precision (8) = 0.912621
+Recall (8) = 0.940000
+------------------------
+
+Para el clasificador 9
+matriz_confusion =
+
+    95     4
+     5   896
+
+Precision (9) = 0.959596
+Recall (9) = 0.950000
+------------------------
+
+Para el clasificador 10
+matriz_confusion =
+
+   100     2
+     0   898
+
+Precision (10) = 0.980392
+Recall (10) = 1.000000
+Matriz de confusion global con los clasificadoresmatrizGorda =
+
+    99     1     0     0     0     0     0     0     0     0
+     1    98     0     0     0     0     0     1     0     0
+     0     3    93     1     1     0     0     2     0     0
+     0     1     0    97     0     0     0     0     1     1
+     0     0     2     0    93     1     0     4     0     0
+     0     0     0     0     0    99     0     0     0     1
+     2     0     0     0     0     0    96     0     2     0
+     1     2     1     0     1     0     0    94     1     0
+     0     0     2     0     0     0     1     2    95     0
+     0     0     0     0     0     0     0     0     0   100
+
+La media de la precision: 0.964452
+La media del recall: 0.964000
+La media de los F1_SCORES: 0.964011

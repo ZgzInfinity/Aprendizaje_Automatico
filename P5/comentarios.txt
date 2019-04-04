@@ -1,0 +1,45 @@
+   Practica 5
+-----------------
+
+Ejercicio 1
+----------------------
+Para el primer ejercicio se ha aplicado validacion cruzada para determinar cual es el mejor valor de lambda sobre el que calcular la 
+predicción. Para hacer la validación cruzada se han fragmentado los datos proporcionados de forma que un 20% son para los datos de 
+validación y el resto para los datos de entrenamiento. Dichos datos no se han modificado realizando bucles internos para modificar los
+folds ya que suponían mucho tiempo de ejecución. Para realizar la validación los valores de lambda se han analizado en un intervalo a 
+escala logaritmica de modo que al hacer el plot de los errores en relación a las lambdas se pueda apreciar mejor como han ido evolucionando.
+
+Para cada valor de lambda en el intervalo, en base a los datos de los clasificadores, se ha obtenido una matriz theta-gorda en la que cada 
+columna contiene los parámetros de las thetas para cada clasficador. A partir de esa matriz theta-gorda se ha calculado la predicción y los
+errores de entrenamiento y de validación. Una vez concluído el algoritmo se ha seleccionado el lambda con menor error de validación obtenido.
+En la gráfica se puede observar para valores de lambda pequeños sobre-ajuste ya que el error de entrenamiento es pequeño, muy próximo a cero, y
+el error de validación es alto dado que se está ajustando demasiado a los datos de entrenamiento y generaliza muy mal para el resto. Conforme
+aumenta la lambda el sobre-ajuste va disminuyendo hasta que comienza a haber sub-ajuste ya que ambos errores crecen a un ritmo casi exponencial
+para valores de lambda grandes debido a que los atributos se están penalizando demasiado. (Comentar la leyenda del gráfico).
+
+Una vez obtenido el mejor lambda con la validación cruzada se ha procedido a obtener una nueva matriz theta-gorda con todos los datos de 
+entrenamiento. Se ha obtenido una nueva predicción y en base a ella se ha medido la tasa de error con los datos de test, la cual es mayor que 
+la obtenida con la clasidicación multiclase de la práctica 4, evidenciando así, que este modelo va a ofrecer resultados peores. 
+
+Finalmente se ha calculado para cada dígito de manuscrito la matriz de confusión, su precisión y su recall. De esta forma se puede ver cuales de 
+los diez clasificadores son los más problemáticos. Adicionalmente se ha obtenido la matriz de confusión global para poder determinar cuales son
+los clasificadores entre los que exsiten más confusiones. También se ha calculado el F-score de cada cladsificador, así como la media de la
+precisión, del recall, y del F-score. Estos valores son inferiores a los obtenidos en la práctica 4 por lo que con bayes ingenuo se han obtenido
+peores resultados, aunque tampoco son malos.
+
+Ejercicio 2
+-----------------------
+Para este ejercicio se ha realizado lo mismo que en el ejercicio anterior pero usando las matrices de covarianzas. El funcionamiento es similar 
+al anterior con la diferencia de que existe para valores de lambda pequeños mucho más sobre-ajuste que en el modelo anterior. Por ello el valor 
+de lambda obtenido es mayor, aunque después también se produce sub-ajuste. En base a ese mejor lambda se ha vuelto a entrenar con todos los datos 
+y se ha calculado la predicción con los errores de test, el cual obtiene una tasa de error practicamente nula, por lo que este modelo predispone a ser el mejor de todos. Se ha calculado las matrices de confusión para cada dígito clasificador y la gobal para poder analizar mejor los 
+resultados, así como la media de precisión, recall y F-score de todos los clasificadores. Se puede observar que en todos ellos los resultados de 
+mejora son altamente notables debido a que se tiene en cuenta la correlación entre las variables puesto que existe dependencia entre los
+atributos a diferencia de los modelos anteriores. 
+
+De los tres modelos hay que quedarse con las matrices de covarianzas y en orden de resultados de mejor a peor los modelos quedan clasificados en 
+el siguiente orden:
+
+1 - Matrices de covarianzas
+2 - Clasificación multiclase de la práctica 4
+3 - Bayes ingenuo 
