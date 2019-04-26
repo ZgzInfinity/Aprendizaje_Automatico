@@ -7,7 +7,8 @@ close all
 load P61
 
 % Graficar los datos originales
-figure(1);
+figure();
+title('Grafico con los datos originales');
 axis equal;
 grid on;
 hold on;
@@ -24,7 +25,8 @@ printf('La matriz de atributos estandarizados es la siguiente ');
 Xest
 
 % Graficar los datos centrados
-figure(2);
+figure();
+title('Grafico con los datos originales centrados a la media');
 axis equal;
 grid on;
 hold on;
@@ -68,7 +70,8 @@ res = Uord * diag(vDiagMod)
 % Graficar la variabilidad que se mantiene si utilizas los tres primeros
 % vectores propios, los dos primeros, o solo el primer vector propio
 
-figure(3);
+figure();
+title('Variabilidad usando un vector propio');
 axis equal;
 grid on;
 hold on;
@@ -79,8 +82,9 @@ ylabel('Yest');
 zlabel('Zest');
 
 
-%figure(4);
+%figure();
 %axis equal;
+%title('Variabilidad usando dos vectores propios');
 %grid on;
 %hold on;
 %plot2(res(:,1),res(:,2),'-r');
@@ -90,7 +94,8 @@ zlabel('Zest');
 %zlabel('Zest');
 
 
-figure(5);
+figure();
+title('Variabilidad usando 3 vectores propios');
 axis equal;
 grid on;
 hold on;
@@ -119,6 +124,9 @@ Ureduce
 
 % Obtencion de la matriz Z 
 Z = Xest * Ureduce;
+
+figure();
+plot3(Z(:,1),Z(:,2),Z(:,3),'b.');
 
 fprintf('la matriz de valores redimensionados en K = %d dimensiones es la siguiente\n', k);
 Z
