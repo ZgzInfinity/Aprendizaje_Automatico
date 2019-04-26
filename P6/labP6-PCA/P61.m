@@ -103,22 +103,24 @@ zlabel('Zest');
 % Aplicar PCA para reducir las dimensiones de los datos y mantener al menos
 % el 90% de la variabilidad
 
-kN = sum(diag(vDiagMod));
-N = size(vDiagMod);
+[k, sumas, sumaK] = findValorK(vDiagMod, 0.90);
 
-encontrado = 0;
-k = 1;
+fprintf('Las sumas realizadas hasta ahora alcanzar la mejor dimension es la siguiente\n');
+sumas
 
-while (k < N && encontrado != 1)
-  for i = 1:k
-      sumaK = sumaK + vDiagMod(i , i);
-  end 
-  if (sumaK / kN >= 0.90)
-    encontrado = 1;
-  end 
-end
-
+fprintf('La suma primera suma que ha sido superior a 0.90 ha sido %f\n', sumaK);
 
 % Graficar aparte los datos z proyectados según el resultado anterior
+Ureduce = Uord(1:size(Uord,1),1:k);
+
+fprintf('Para el numero de dimensiones k = %d\n', k);
+fprintf('La matriz de U reducida es la siguiente\n');
+Ureduce
+
+% Obtencion de la matriz Z 
+Z = Xest * Ureduce;
+
+fprintf('la matriz de valores redimensionados en K = %d dimensiones es la siguiente\n', k);
+Z
 
 % Graficar en verde los datos reproyectados \hat{x} en la figura original
