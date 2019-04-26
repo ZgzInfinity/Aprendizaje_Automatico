@@ -7,19 +7,19 @@ close all
 I = imread('turing.png');
 
 % Convertirla a blanco y negro
-BW = rgb2gray(I);
+% BW = rgb2gray(I);
 
 % Convertir los datos a double
-X=im2double(BW);
+X=im2double(I);
 
 % graficar la imagen
 figure(1);
 colormap(gray);
 imshow(X);
 axis off;
-pause
 
 % Aplicar PCA
+[U,S,V] = svd(X);
 
 % Graficar las primeras 5 componentes
 for k = 1:5,
