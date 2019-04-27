@@ -21,9 +21,6 @@ zlabel('Z');
 mu = mean(X);
 Xest = X - mu;
 
-printf('La matriz de atributos estandarizados es la siguiente ');
-Xest
-
 % Graficar los datos centrados
 figure();
 title('Grafico con los datos originales centrados a la media');
@@ -52,7 +49,8 @@ V
 
 % Ordenar los vectores y valores proprios de mayor a menor valor propio
 printf('La matriz de los valores propios ordenada de mayor a menor es la siguiente\n ');
-vDiag = diag(V)'
+vDiagAscend = diag(sort(diag(V)','descend'))
+vDiag = diag(V)';
 
 printf('La matriz de los vectores propios ordenada de mayor a menor\n ');
 printf('segun su valor propio es la siguiente\n');
@@ -62,7 +60,7 @@ Uord = U(:,I')
 % Graficar en color rojo cada vector propio * 3 veces la raiz de su 
 % correspondiente valor propio
 printf('La matrz resultante de multiplicar la raiz cuadradada de cada valor es la siguiente\n');
-vDiagMod = 3 * sqrt(vDiag)
+vDiagMod = 3 * sqrt(sort(vDiag,'descend'))
 
 printf('La matriz resultantes de cada vector propio * 3 veces la raiz de su valor propio es la siguiente\n');
 res = Uord * diag(vDiagMod)
@@ -128,7 +126,6 @@ Z = Xest * Ureduce;
 figure();
 plot3(Z(:,1),Z(:,2),Z(:,3),'b.');
 
-fprintf('la matriz de valores redimensionados en K = %d dimensiones es la siguiente\n', k);
-Z
+
 
 % Graficar en verde los datos reproyectados \hat{x} en la figura original
