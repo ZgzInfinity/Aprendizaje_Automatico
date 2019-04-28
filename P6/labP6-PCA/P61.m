@@ -50,17 +50,18 @@ V
 % Ordenar los vectores y valores proprios de mayor a menor valor propio
 printf('La matriz de los valores propios ordenada de mayor a menor es la siguiente\n ');
 vDiagAscend = diag(sort(diag(V)','descend'))
-vDiag = diag(V)';
+vDiag = sort(diag(V)','descend');
+vDiagRef = diag(V)';
 
 printf('La matriz de los vectores propios ordenada de mayor a menor\n ');
 printf('segun su valor propio es la siguiente\n');
-[~, I] = sort(vDiag, 'descend');
+[~, I] = sort(vDiagRef, 'descend');
 Uord = U(:,I')
 
 % Graficar en color rojo cada vector propio * 3 veces la raiz de su 
 % correspondiente valor propio
 printf('La matrz resultante de multiplicar la raiz cuadradada de cada valor es la siguiente\n');
-vDiagMod = 3 * sqrt(sort(vDiag,'descend'))
+vDiagMod = 3 * sqrt(sort(vDiagRef,'descend'))
 
 printf('La matriz resultantes de cada vector propio * 3 veces la raiz de su valor propio es la siguiente\n');
 res = Uord * diag(vDiagMod)
@@ -106,7 +107,7 @@ zlabel('Zest');
 % Aplicar PCA para reducir las dimensiones de los datos y mantener al menos
 % el 90% de la variabilidad
 
-[k, sumas, sumaK] = findValorK(vDiagMod, 0.90);
+[k, sumas, sumaK] = findValorKvect(vDiag, 0.90);
 
 fprintf('Las sumas realizadas hasta ahora alcanzar la mejor dimension es la siguiente\n');
 sumas
@@ -121,7 +122,7 @@ fprintf('La matriz de U reducida es la siguiente\n');
 Ureduce
 
 % Obtencion de la matriz Z 
-Z = Xest * Ureduce;
+Z = Ureduce' * Xest';
 
 figure();
 plot3(Z(:,1),Z(:,2),Z(:,3),'b.');
