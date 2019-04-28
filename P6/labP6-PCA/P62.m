@@ -65,6 +65,9 @@ for k = 1:5,
     
     %Incremento del id de la imagen
     idImagen = idImagen + 1;
+    
+    % Parada intermedia de muestreo de imagenes
+    pause(0.5);
 end
 
 % Graficar la reconstrucción con las primeras 1, 2, 5, 10, 20, y total
@@ -87,21 +90,27 @@ for k = [1 2 5 10 20 rank(X)],
     
     %Incremento del id de la imagen
     idImagen = idImagen + 1;
+    
+    % Parada intermedia de muestreo de imagenes
+    pause(0.5);
 end
 
+sDiag
 
 % Encontrar el valor de k que mantenga al menos el 90% de la variabilidad
-[k, sumas, sumaK] = findValorKmat(V, 0.90);
+[k] = findValorKvect(sDiag, 0.90);
 
-fprintf('La suma primera suma que ha sido superior a 0.90 ha sido %f\n', sumaK);
 fprintf('El valor de k es el siguiente: %d\n', k);
+
+
+pause;
 
 % Graficar la reconstrucción con las primeras k componentes
 for i = 1:k,
     figure(idImagen);
     
-    % Coger la K primeras columnas de la matriz U ordenada
-    Ureduce = Uord(1:size(Uord,1),1:k);
+    % Coger la I primeras columnas de la matriz U ordenada
+    Ureduce = Uord(1:size(Uord,1),1:i);
     
     % Obtencion de la matriz Z para K dimensiones
     Z = Ureduce' * Xest';
@@ -116,6 +125,9 @@ for i = 1:k,
     
     %Incremento del id de la imagen
     idImagen = idImagen + 1;
+    
+    % Parada intermedia de muestreo de imagenes
+    pause(0.5);
 end
 
 % Calcular y mostrar el ahorro en espacio
