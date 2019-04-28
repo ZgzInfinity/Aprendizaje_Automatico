@@ -95,18 +95,15 @@ for k = [1 2 5 10 20 rank(X)],
     pause(0.5);
 end
 
-sDiag
 
 % Encontrar el valor de k que mantenga al menos el 90% de la variabilidad
 [k] = findValorKvect(sDiag, 0.90);
 
 fprintf('El valor de k es el siguiente: %d\n', k);
-
-
 pause;
 
 % Graficar la reconstrucción con las primeras k componentes
-for i = 1:k,
+for i = 1:3,
     figure(idImagen);
     
     % Coger la I primeras columnas de la matriz U ordenada
@@ -131,3 +128,4 @@ for i = 1:k,
 end
 
 % Calcular y mostrar el ahorro en espacio
+plot(diag(S));
