@@ -58,13 +58,15 @@ end
 % Encontrar el valor de k que mantenga al menos el 90% de la variabilidad
 [k, sumas, sumaK] = findValorKmat(V, 0.90);
 
-fprintf('Las sumas realizadas hasta ahora alcanzar la mejor dimension es la siguiente\n');
-sumas
-
 fprintf('La suma primera suma que ha sido superior a 0.90 ha sido %f\n', sumaK);
-
+fprintf('El valor de k es el siguiente: %d\n', k);
 
 % Graficar la reconsrtucción con las primeras k componentes
-
+for i = 1:k,
+    figure(4);
+    imshow(Xhat);
+    colormap(gray);
+    axis off;
+end
 
 % Calcular y mostrar el ahorro en espacio

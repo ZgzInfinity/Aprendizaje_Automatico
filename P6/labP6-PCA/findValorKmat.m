@@ -6,29 +6,39 @@ function [k, sumas, sumaK] = findValorKmat(vDiagMod, variabilidad)
 	N = size(vDiagMod , 2);
 	
 	% Control de hallazgo de mejor valor de K
-	encontrado = 0;
+	mejorSuma = 0;
 	k = 1;
 
 	% Vector auxiliar de las k primeras sumas
 	sumas = [];
-
+  ratioMax = 0;
+  
 	% Bucle para recorrer matriz vDiagMod 
-	while (k <= N && encontrado != 1)
+	while (k <= N)
 	  % Valor de la suma de las k primeras componentes
 	  sumaK = 0;
 	  for i = 1:k
 		  % Bucle de suma
 		  sumaK = sumaK + vDiagMod(i , i);
 	  end
-	  % Comparacion de variabilidad
-	  if (sumaK / kN >= variabilidad)
+	 
+    % Calculo del ratio 
+	  ratio = sumaK / kN;
+    
 		% Mejor valor de K hallado
-		encontrado = 1;
-	  else
+   
+    if (ratio >= variabilidad)
+      % El ratio supera la variabilidad
+      if (ratio >= ratioMax)
+        % Se supera el maximo ratio hallado
+        ratioMax = ratio;
+        mejorK = k;
+      end
+    end
+    
 		% Incrementar valor de K
 		k = k + 1;
 		% Incorporar la suma obtenida en iteracion actual
 		sumas = [sumas ; sumaK];
-	  end 
-	end
+	end 
 end
