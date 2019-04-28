@@ -13,7 +13,6 @@ nimages = size(X,1);
 % Show the images
 for I=1:40:nimages, 
     imshow(reshape(X(I,:),nrows,ncols))
-    pause(0.1)
 end
 
 
