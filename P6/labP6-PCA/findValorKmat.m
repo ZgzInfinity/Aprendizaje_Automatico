@@ -1,4 +1,4 @@
-function [k, sumas, sumaK] = findValorKmat(vDiagMod, variabilidad)
+function [mejorK] = findValorKmat(vDiagMod, variabilidad)
 	% Suma de los todos los K elementos de la diagonal
 	kN = sum(sum(diag(vDiagMod)));
 	
@@ -6,11 +6,8 @@ function [k, sumas, sumaK] = findValorKmat(vDiagMod, variabilidad)
 	N = size(vDiagMod , 2);
 	
 	% Control de hallazgo de mejor valor de K
-	mejorSuma = 0;
 	k = 1;
 
-	% Vector auxiliar de las k primeras sumas
-	sumas = [];
   ratioMax = 0;
   
 	% Bucle para recorrer matriz vDiagMod 
@@ -38,7 +35,5 @@ function [k, sumas, sumaK] = findValorKmat(vDiagMod, variabilidad)
     
 		% Incrementar valor de K
 		k = k + 1;
-		% Incorporar la suma obtenida en iteracion actual
-		sumas = [sumas ; sumaK];
 	end 
 end

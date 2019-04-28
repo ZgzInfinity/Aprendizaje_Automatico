@@ -28,9 +28,9 @@ axis equal;
 grid on;
 hold on;
 plot3(Xest(:,1),Xest(:,2),Xest(:,3),'b.');
-xlabel('Xest');
-ylabel('Yest');
-zlabel('Zest');
+xlabel('Eje X ');
+ylabel('Eje Y');
+zlabel('Eje Z');
 
 % Calcular la matrix de covarianza muestral de los datos centrados
 mCov = cov(Xest);
@@ -66,6 +66,7 @@ vDiagMod = 3 * sqrt(sort(vDiagRef,'descend'))
 printf('La matriz resultantes de cada vector propio * 3 veces la raiz de su valor propio es la siguiente\n');
 res = Uord * diag(vDiagMod)
 
+
 % Graficar la variabilidad que se mantiene si utilizas los tres primeros
 % vectores propios, los dos primeros, o solo el primer vector propio
 
@@ -76,9 +77,9 @@ grid on;
 hold on;
 plot(res(:,1),'-r');
 plot(Xest(:,1),'b.');
-xlabel('Xest');
-ylabel('Yest');
-zlabel('Zest');
+xlabel('Eje X ');
+ylabel('Eje Y');
+zlabel('Eje Z');
 
 
 %figure();
@@ -100,19 +101,19 @@ grid on;
 hold on;
 plot3(res(:,1),res(:,2),res(:,3),'b.');
 plot3(Xest(:,1),Xest(:,2),Xest(:,3),'b.');
-xlabel('Xest');
-ylabel('Yest');
-zlabel('Zest');
+xlabel('Eje X ');
+ylabel('Eje Y');
+zlabel('Eje Z');
+
+
 
 % Aplicar PCA para reducir las dimensiones de los datos y mantener al menos
 % el 90% de la variabilidad
 
-[k, sumas, sumaK] = findValorKvect(vDiag, 0.90);
+[k] = findValorKvect(vDiag, 0.90);
 
-fprintf('Las sumas realizadas hasta ahora alcanzar la mejor dimension es la siguiente\n');
-sumas
+fprintf('El mejor valor hallado de k es %d\n', k);
 
-fprintf('La suma primera suma que ha sido superior a 0.90 ha sido %f\n', sumaK);
 
 % Graficar aparte los datos z proyectados según el resultado anterior
 Ureduce = Uord(1:size(Uord,1),1:k);
@@ -124,9 +125,17 @@ Ureduce
 % Obtencion de la matriz Z 
 Z = Ureduce' * Xest';
 
-figure();
-plot3(Z(:,1),Z(:,2),Z(:,3),'b.');
-
-
 
 % Graficar en verde los datos reproyectados \hat{x} en la figura original
+Xgorro = Ureduce * Z;
+Xhat = Xgorro';
+
+figure();
+title('Reconstruccion de los datos originales');
+axis equal;
+grid on;
+hold on;
+plot3(Xhat(:,1),Xhat(:,2),Xhat(:,3),'g.');
+xlabel('Eje X');
+ylabel('Eje Y');
+zlabel('Eje Z');
