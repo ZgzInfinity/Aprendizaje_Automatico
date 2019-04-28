@@ -128,4 +128,18 @@ for i = 1:3,
 end
 
 % Calcular y mostrar el ahorro en espacio
-plot(diag(S));
+figure();
+grid on; 
+hold on;
+title('Grafico del ratio de compresion');
+plot(diag(S),'b-','LineWidth', 3);
+legend('Valor del ratio');
+
+
+
+% Esperar a pulsar tecla
+pause;
+
+% Cerrar todas las figuras
+clear all
+close all
