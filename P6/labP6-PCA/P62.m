@@ -28,7 +28,7 @@ Xest = X - mu;
 mCov = cov(Xest);
 
 % Calculo de las matrices U, S, V con svd
-[U,S,V] = svd(mCov);
+[U,S,V] = svd(X);
 
 % Ordenar la matriz de valores propios de mayor a menor
 sDiagAscend = diag(sort(diag(S)','descend'));
@@ -53,12 +53,10 @@ for k = 1:5,
     Ureduce = Uord(1:size(Uord,1),1:k);
     
     % Obtencion de la matriz Z para K dimensiones
-    Z = Ureduce' * Xest';
-    Zprim = Z';
-    
+    Z = Ureduce' * X;
+   
     % Reconstruccion de los datos para k dimensiones a partir de Z
-    Xgorro = Ureduce * Z;
-    Xhat = Xgorro';
+    Xhat = Ureduce * Z;
     imshow(Xhat);
     colormap(gray);
     axis off;
@@ -78,12 +76,10 @@ for k = [1 2 5 10 20 rank(X)],
     Ureduce = Uord(1:size(Uord,1),1:k);
     
     % Obtencion de la matriz Z para K dimensiones
-    Z = Ureduce' * Xest';
-    Zprim = Z';
-    
+    Z = Ureduce' * X;
+
     % Reconstruccion de los datos para k dimensiones a partir de Z
-    Xgorro = Ureduce * Z;
-    Xhat = Xgorro';
+    Xhat = Ureduce * Z;
     imshow(Xhat);
     colormap(gray);
     axis off;
@@ -103,19 +99,17 @@ fprintf('El valor de k es el siguiente: %d\n', k);
 pause;
 
 % Graficar la reconstrucción con las primeras k componentes
-for i = 1:3,
+for i = 1:k,
     figure(idImagen);
     
     % Coger la I primeras columnas de la matriz U ordenada
     Ureduce = Uord(1:size(Uord,1),1:i);
     
     % Obtencion de la matriz Z para K dimensiones
-    Z = Ureduce' * Xest';
-    Zprim = Z';
+    Z = Ureduce' * X;
     
     % Reconstruccion de los datos para k dimensiones a partir de Z
-    Xgorro = Ureduce * Z;
-    Xhat = Xgorro';
+    Xhat = Ureduce * Z;
     imshow(Xhat);
     colormap(gray);
     axis off;
@@ -135,11 +129,3 @@ title('Grafico del ratio de compresion');
 plot(diag(S),'b-','LineWidth', 3);
 legend('Valor del ratio');
 
-
-
-% Esperar a pulsar tecla
-pause;
-
-% Cerrar todas las figuras
-clear all
-close all

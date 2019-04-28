@@ -10,8 +10,9 @@ function [mejorK] = findValorKvect(vDiagMod, variabilidad)
 
   ratioMax = 0;
   
+  encontrado = 0;
 	% Bucle para recorrer matriz vDiagMod 
-	while (k < N)
+	while (k < N && encontrado == 0)
 	  % Valor de la suma de las k primeras componentes
 	  sumaK = 0;
 	  for i = 1:k
@@ -25,6 +26,8 @@ function [mejorK] = findValorKvect(vDiagMod, variabilidad)
 	  % Comparacion de variabilidad
 	  if (ratio >= variabilidad)
       % Comprobacion de ver si el ratio es superior
+      encontrado = 1;
+      
       if (ratio > ratioMax)
           % Actualizacion del valor del ratio mejor
           ratioMax = ratio;
