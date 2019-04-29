@@ -58,11 +58,26 @@ vDiagMod = 3 * sqrt(sort(vDiagRef,'descend'));
 res = Uord * diag(vDiagMod);
 
 
+% Calculo de los vectores bonitos
+figure();
+title('Grafico con los vectores');
+inicio = zeros(3 ,3);
+fin = [res(:,1)'; res(:,2)'; res(:,3)']
+quiver3(inicio(:,1), inicio(:,2), inicio(:,3), fin(:,1), fin(:,2), fin(:,3), '-r', 'LineWidth', 3);
+
 % Graficar la variabilidad que se mantiene si utilizas los tres primeros
 % vectores propios, los dos primeros, o solo el primer vector propio
 
+% Calculo de la variabilidad total
+varTotal = sum(vDiag);
 
-% FALTA ESTO
+porcentajesVar = [];
+
+% Incorporar porcentajes parciales
+for i = 1:size(vDiag, 2)
+   porParcial = sum(vDiag(1:i)) / varTotal;
+   porcentajesVar = [porcentajesVar porParcial];
+end
 
 
 % Aplicar PCA para reducir las dimensiones de los datos y mantener al menos
@@ -106,3 +121,17 @@ plot3(Xhat(:,1),Xhat(:,2),Xhat(:,3),'g.');
 xlabel('Eje X');
 ylabel('Eje Y');
 zlabel('Eje Z');
+
+% Graficar los datos con los vectores unitarios
+figure();
+title('Grafico con los datos centrados y los vectores');
+axis equal;
+grid on;
+hold on;
+plot3(Xest(:,1),Xest(:,2),Xest(:,3),'b.');
+quiver3(inicio(:,1), inicio(:,2), inicio(:,3), fin(:,1), fin(:,2), fin(:,3),'-r', 'LineWidth', 3);
+xlabel('Eje X');
+ylabel('Eje Y');
+zlabel('Eje Z');
+
+

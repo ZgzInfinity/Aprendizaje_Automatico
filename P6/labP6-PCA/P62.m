@@ -49,14 +49,12 @@ idImagen = 1;
 for k = 1:5,
     figure(idImagen);
     
-    % Coger la K primeras columnas de la matriz U ordenada
-    Ureduce = Uord(1:size(Uord,1),1:k);
+    Xhat = 0;
     
-    % Obtencion de la matriz Z para K dimensiones
-    Z = Ureduce' * X;
-   
-    % Reconstruccion de los datos para k dimensiones a partir de Z
-    Xhat = Ureduce * Z;
+    for j = 1:k,
+      Xhat = Xhat + Uord(:, j) * S( j, j) * V(:,j)';
+    end
+    
     imshow(Xhat);
     colormap(gray);
     axis off;
@@ -71,15 +69,14 @@ end
 % Graficar la reconstrucción con las primeras 1, 2, 5, 10, 20, y total
 % de componentes
 for k = [1 2 5 10 20 rank(X)],
-    figure(idImagen);
-    % Coger la K primeras columnas de la matriz U ordenada
-    Ureduce = Uord(1:size(Uord,1),1:k);
+   figure(idImagen);
     
-    % Obtencion de la matriz Z para K dimensiones
-    Z = Ureduce' * X;
-
-    % Reconstruccion de los datos para k dimensiones a partir de Z
-    Xhat = Ureduce * Z;
+    Xhat = 0;
+    
+    for j = 1:k,
+      Xhat = Xhat + Uord(:, j) * S( j, j) * V(:,j)';
+    end
+    
     imshow(Xhat);
     colormap(gray);
     axis off;
@@ -90,6 +87,7 @@ for k = [1 2 5 10 20 rank(X)],
     % Parada intermedia de muestreo de imagenes
     pause(0.5);
 end
+
 
 
 % Encontrar el valor de k que mantenga al menos el 90% de la variabilidad
@@ -102,14 +100,12 @@ pause;
 for i = 1:k,
     figure(idImagen);
     
-    % Coger la I primeras columnas de la matriz U ordenada
-    Ureduce = Uord(1:size(Uord,1),1:i);
+    Xhat = 0;
     
-    % Obtencion de la matriz Z para K dimensiones
-    Z = Ureduce' * X;
+    for j = 1:i,
+      Xhat = Xhat + Uord(:, j) * S( j, j) * V(:,j)';
+    end
     
-    % Reconstruccion de los datos para k dimensiones a partir de Z
-    Xhat = Ureduce * Z;
     imshow(Xhat);
     colormap(gray);
     axis off;
@@ -121,11 +117,18 @@ for i = 1:k,
     pause(0.5);
 end
 
-% Calcular y mostrar el ahorro en espacio
+
+% Muestreo del grafico 
+[m, n] = size(S);
 figure();
-grid on; 
+grid on;
 hold on;
-title('Grafico del ratio de compresion');
-plot(diag(S),'b-','LineWidth', 3);
-legend('Valor del ratio');
+title('Grafico con el ratio de compresion');
+plot((m * n) ./ ((1:1:n) * (m + n + 1)), '-b','LineWidth',3);
+xlabel('Valor de K');
+ylabel('Espacio ahorrado');
+legend ('Ratio');
+
+ahorro = (m * n) ./ ((k) * (m + n + 1));
+porcentajeAhorro = 100 / ahorro 
 
