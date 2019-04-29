@@ -119,7 +119,7 @@ Xest = Xok - repmat(mean(Xok), size(Xok, 1), 1);
 % Valores de test
 matrix = find((y == 10) | (y == 1));
 YokTest = ytest(matrix,:);
-XokTest = Xest(matrix,:);
+XokTest = Xtest(matrix,:);
 
 % Centrar los datos de Test
 XtestEst = XokTest - repmat(mean(Xok), size(XokTest, 1), 1);
@@ -160,13 +160,15 @@ Yok = Yok(p,:);
 modelo = entrenarGaussianas(Z, Yok, 0, mejor_lambda, 1, 10);
 
 % Obtencion de la prediccion para cada clasificador
-prediccion = clasificacionBayesiana(modelo, YokTest, 1, 10);
+prediccion = clasificacionBayesiana(modelo, Ztest, 1, 10);
 
 error_test = ((1 - (mean(double(prediccion == YokTest)))) * 100);
 fprintf('Error con datos de test = %f\n', error_test);
 
 % Matrices de confusion para cada valor mejor
 matrizConfusion(prediccion, YokTest, 1, 10);
+
+
 
 %% VALORES 8 Y 3 PERO CON PCA PARA LOS K = 2
 
@@ -181,7 +183,7 @@ Xest = Xnot - repmat(mean(Xnot), size(Xnot, 1), 1);
 % Valores de test
 matrix = find((ytest == 8) | (ytest == 3));
 YnotTest = ytest(matrix,:);
-XnotTest = Xest(matrix,:);
+XnotTest = Xtest(matrix,:);
 
 % Centrar los datos de Test
 XtestEst = XnotTest - repmat(mean(Xnot), size(XnotTest, 1), 1);
@@ -213,15 +215,15 @@ Ztest = Ztest';
 rand('state',0);
 p = randperm(length(Yok));
 Z = Z(p,:);
-Yok = Yok(p,:);
+Ynot = Ynot(p,:);
 
 
 % Calculo del mejor valor de lambda para cada clasificador
-[mejor_lambda] = validacionCruzada(Z, Yok, 0, 3, 8);
-modelo = entrenarGaussianas(Z, Yok, 0, mejor_lambda, 3, 8);
+[mejor_lambda] = validacionCruzada(Z, Ynot, 0, 3, 8);
+modelo = entrenarGaussianas(Z, Ynot, 0, mejor_lambda, 3, 8);
 
 % Obtencion de la prediccion para cada clasificador
-prediccion = clasificacionBayesiana(modelo, YnotTest, 3, 8);
+prediccion = clasificacionBayesiana(modelo, Ztest, 3, 8);
 
 error_test = ((1 - (mean(double(prediccion == YnotTest)))) * 100);
 fprintf('Error con datos de test = %f\n', error_test);
