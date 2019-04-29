@@ -16,7 +16,7 @@ mCov = cov(Xest);
 [U, V] = eig(mCov);
 
 % Centrado de los datos de test
-XtestEst = Xtest - repmat(mean(Xtest), size(Xtest, 1), 1);
+XtestEst = Xtest - repmat(mean(X), size(Xtest, 1), 1);
 
 
 % Ordenacion de las dos primeras componentes
