@@ -168,7 +168,8 @@ fprintf('Error con datos de test = %f\n', error_test);
 % Matrices de confusion para cada valor mejor
 matrizConfusion(prediccion, YokTest, 1, 10);
 
-
+fprintf('Vista de la matriz de confusion global\n');
+matrizConfusionGorda(prediccion, YokTest, 1, 10);
 
 %% VALORES 8 Y 3 PERO CON PCA PARA LOS K = 2
 
@@ -230,6 +231,10 @@ fprintf('Error con datos de test = %f\n', error_test);
 
 % Matrices de confusion para cada valor mejor
 matrizConfusion(prediccion, YnotTest, 3, 8);
+
+
+fprintf('Vista de la matriz de confusion global\n');
+matrizConfusionGorda(prediccion, YnotTest, 3, 8);
 
 
 
