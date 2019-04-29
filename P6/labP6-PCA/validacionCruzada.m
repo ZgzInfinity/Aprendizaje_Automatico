@@ -1,4 +1,4 @@
-function [ mejor_lambda ] = validacionCruzada( X, y, nc, NaiveBayes)
+function [ mejor_lambda ] = validacionCruzada( X, y, NaiveBayes, n1, n2)
 
  % Se inicializan las variables.
   mejor_lambda = 0;
@@ -20,18 +20,18 @@ function [ mejor_lambda ] = validacionCruzada( X, y, nc, NaiveBayes)
       [ Xcv, ycv, Xtr, ytr ] = particion( 1, 5, X, y );
           
       % Se obtiene el theta que minimiza la funcion de CosteLogReg.
-      modelo = entrenarGaussianas(Xtr, ytr, nc, NaiveBayes, lambda);
+      modelo = entrenarGaussianas(Xtr, ytr, NaiveBayes, lambda, n1, n2);
       
       % Se obtiene la prediccion para la theta obtenida enteriormente con los
       % datos de entrenamiento.
-      h = clasificacionBayesiana(modelo, Xtr);   
+      h = clasificacionBayesiana(modelo, Xtr, n1, n2);   
       
       % Se calculan los errores con los datos de entrenamiento.
-      err_T = err_T + ((1 - (mean(double(h == ytr))))*100);;    
+      err_T = err_T + ((1 - (mean(double(h == ytr))))*100);    
 
       % Se obtiene la prediccion para la theta obtenida enteriormente con los
       % datos de test.
-      h = clasificacionBayesiana(modelo, Xcv);
+      h = clasificacionBayesiana(modelo, Xcv, n1, n2);
       
       % Se calculan los errores con los datos de test.
       err_V = err_V + ((1 - (mean(double(h == ycv))))*100);
