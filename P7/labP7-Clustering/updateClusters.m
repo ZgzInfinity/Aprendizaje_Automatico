@@ -1,38 +1,20 @@
-function Z = updateClusters(D,mu)
+function Z = updateClusters(D, mu)
   % D(m,n), m datapoints, n dimensions
   % mu(K,n) final centroids
   %
   % Z(m) assignment of each datapoint to a class
   
   % Total de muestras de la matriz D
-  K = size(mu, 1);
+  [m n] = size(D);
+  K = size(mu, 1)
+  A = reshape(repmat(D(:)', K, []), [], 3);
+  Km = [1:K]';
+  muk = repmat(mu, m, 1);
   
-  % Poner la matriz Z de dimension N,1 toda a ceros
-  Z = zeros(size(D,1), 1);
-
-  % Para cada componente de la matriz D
-  for x_i = 1 : size(D, 1)
-    % Obtencion de la componente
-    X = D(x_i, :);
-    % Distancia al centroide
-    mejorDist = Inf;
-    
-    % Promedio de la media
-    for mu_i = 1 : K
-      % Seleccion de la i-esima media
-      mu = c(mu_i, :);
-      
-      % Distancia euclidea de la media del centroide mu con la muestra X
-      distEuclidea  = sqrt(sum((X - mu) .^ 2));
-     
-      % Comprobar que la distancia euclidea es mejor 
-      if distEuclidea < mejorDist
-        % Se actualiza la distancia
-        mejorDist = distEuclidea;
-        
-        % Se actualiza el nuevo centroide
-        Z(x_i) = mu_i;
-      end
-    end
-  end
+  % Calculo de distancia euclidea de cada punto al centroide
+  calculo = sqrt((A(:,1)- muk(:,1)).^2 + (A(:,2)- muk(:,2)).^2 + (A(:,3)- muk(:,3)).^2);
+  
+  calc2 = reshape(calculo,[K m]);
+  
+  [~, Z] = min(calc2, [], 1);
 end
