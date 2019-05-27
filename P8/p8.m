@@ -204,7 +204,8 @@ pause;
 
 % FILL HERE!!!!!!!!!!!!!!!!!!
 % Make predictions for yourself in my_predictions (now is random)
-my_predictions = randperm(num_movies);
+p = X * Theta';
+my_predictions = p(:,1)+ Ymean;
 
 
 % Sort the predictions and show them
