@@ -205,7 +205,7 @@ pause;
 % FILL HERE!!!!!!!!!!!!!!!!!!
 % Make predictions for yourself in my_predictions (now is random)
 p = X * Theta';
-my_predictions = p(:,1)+ Ymean;
+my_predictions = p(:,1);
 
 
 % Sort the predictions and show them
